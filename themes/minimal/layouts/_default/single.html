@@ -1,0 +1,16 @@
+{{ define "main" }}
+<a href="{{ .Site.BaseURL }}posts/" class="back-link">← blog</a>
+
+<article>
+  <h1>{{ .Title }}</h1>
+  <div class="meta">
+    <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+    {{ with .Params.tags }}
+      {{ range . }} · {{ . }}{{ end }}
+    {{ end }}
+  </div>
+  <div class="content">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}
