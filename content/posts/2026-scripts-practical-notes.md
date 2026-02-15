@@ -1,0 +1,6 @@
+----
+-title: 'Scripts practical notes'
+-date: '2026-02-15'
+-spoiler: My principles for writing reliable scripts based on my experience in fintech/payments 
+-draft: false
+----
