@@ -2,3 +2,10 @@ baseURL = "https://khranovsky.com/"
 languageCode = "en-us"
 title = "blog by Denis Khran"
 theme = "minimal"
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    noClasses = true
+    style = "tango"
