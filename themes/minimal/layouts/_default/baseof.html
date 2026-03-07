@@ -12,6 +12,10 @@
       --muted: #6a6a6a;
       --border: #e5e5e5;
       --max: 680px;
+      --s1: 12px;
+      --s2: 24px;
+      --s3: 36px;
+      --s4: 48px;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -28,7 +32,7 @@
       line-height: 1.55;
       color: var(--fg);
       background: var(--bg);
-      padding: 48px 20px;
+      padding: var(--s4) 20px;
     }
     .container {
       max-width: var(--max);
@@ -45,7 +49,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 48px;
+      margin-bottom: var(--s4);
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
       font-size: 13px;
     }
@@ -57,7 +61,7 @@
     }
     .back-link {
       display: inline-block;
-      margin-bottom: 24px;
+      margin-bottom: var(--s2);
       color: var(--muted);
       font-size: 13px;
     }
@@ -65,30 +69,30 @@
       list-style: none;
     }
     .post-item {
-      margin-bottom: 32px;
+      margin-bottom: var(--s3);
     }
     .post-item h2 {
       font-size: 16px;
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: var(--s1);
     }
     .post-meta {
       font-size: 13px;
       color: var(--muted);
-      margin-bottom: 8px;
+      margin-bottom: var(--s1);
     }
     .post-summary {
       color: var(--muted);
     }
     article h1 {
-      font-size: 18px;
+      font-size: 24px;
       font-weight: 600;
-      margin-bottom: 12px;
+      margin-bottom: var(--s1);
     }
     article .meta {
       font-size: 13px;
       color: var(--muted);
-      margin-bottom: 32px;
+      margin-bottom: var(--s3);
     }
     article .content {
       line-height: 1.7;
@@ -96,26 +100,28 @@
     article .content h2 {
       font-size: 16px;
       font-weight: 600;
-      margin: 32px 0 16px;
+      margin: var(--s3) 0 var(--s1);
+      padding-bottom: var(--s1);
+      border-bottom: 1px solid var(--border);
     }
     article .content h3 {
       font-size: 14px;
       font-weight: 600;
-      margin: 24px 0 12px;
+      margin: var(--s2) 0 var(--s1);
     }
     article .content p {
-      margin-bottom: 18px;
+      margin-bottom: var(--s1);
     }
     article .content ul, article .content ol {
-      margin: 0 0 18px 24px;
+      margin: 0 0 var(--s1) var(--s2);
     }
     article .content li {
       margin-bottom: 6px;
     }
     article .content blockquote {
       border-left: 2px solid var(--border);
-      padding-left: 16px;
-      margin: 18px 0;
+      padding-left: var(--s2);
+      margin: var(--s2) 0;
       color: var(--muted);
     }
     article .content code {
@@ -127,10 +133,10 @@
     }
     article .content pre {
       background: var(--border);
-      padding: 16px;
+      padding: var(--s1);
       border-radius: 6px;
       overflow-x: auto;
-      margin-bottom: 18px;
+      margin-bottom: var(--s1);
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
     }
