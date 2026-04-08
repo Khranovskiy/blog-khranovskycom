@@ -4,7 +4,7 @@
 <article>
   <h1>{{ .Title }}</h1>
   <div class="meta">
-    <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+    <time>{{ .Date.Format "Jan 2, 2006" }}</time> · {{ .ReadingTime }} min read
     {{ with .Params.tags }}
       {{ range . }} · {{ . }}{{ end }}
     {{ end }}
@@ -13,4 +13,8 @@
     {{ .Content }}
   </div>
 </article>
+
+<footer>
+  Denis Khranovskii · <a href="https://www.linkedin.com/in/denis-khranovskiy/">LinkedIn</a>
+</footer>
 {{ end }}
