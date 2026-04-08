@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl:*)",
+      "Bash(hugo:*)",
+      "WebFetch(domain:rakhim.exotext.com)"
+    ]
+  }
+}

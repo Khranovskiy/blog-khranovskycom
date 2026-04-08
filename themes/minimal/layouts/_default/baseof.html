@@ -7,150 +7,173 @@
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <style>
     :root {
-      --bg: #fff;
-      --fg: #111;
-      --muted: #6a6a6a;
-      --border: #e5e5e5;
+      --bg: #fcfcfc;
+      --fg: #2c353d;
+      --muted: #666;
+      --border: #ddd;
+      --link: #093795;
+      --code-bg: #e3e1e1;
+      --font: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+      --mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
       --max: 680px;
-      --s1: 12px;
-      --s2: 24px;
-      --s3: 36px;
-      --s4: 48px;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0a0a0a;
-        --fg: #f2f2f2;
-        --muted: #8f8f8f;
-        --border: #333;
+        --bg: #2e3440;
+        --fg: #d8dee9;
+        --muted: #8a95a3;
+        --border: #3d4450;
+        --link: #6fc8ff;
+        --code-bg: #1a2033;
       }
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      line-height: 1.55;
+      font-family: var(--font);
+      font-size: 18px;
+      line-height: 1.6;
       color: var(--fg);
       background: var(--bg);
-      padding: var(--s4) 20px;
+      padding: 3rem 20px;
     }
     .container {
       max-width: var(--max);
       margin: 0 auto;
     }
     a {
-      color: var(--fg);
+      color: inherit;
       text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
     }
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: var(--s4);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
-      font-size: 13px;
+      margin-bottom: 4rem;
+      font-family: var(--mono);
+      font-size: 0.85rem;
     }
     header .site-title {
       font-weight: 600;
+      color: var(--fg);
     }
     nav a {
       color: var(--muted);
     }
+    nav a:hover {
+      color: var(--fg);
+    }
     .back-link {
       display: inline-block;
-      margin-bottom: var(--s2);
+      margin-bottom: 2.5rem;
       color: var(--muted);
-      font-size: 13px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+    .back-link:hover {
+      color: var(--fg);
     }
     .post-list {
       list-style: none;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
     }
     .post-item {
-      margin-bottom: var(--s3);
-    }
-    .post-item h2 {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: var(--s1);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      align-items: baseline;
     }
     .post-meta {
-      font-size: 13px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
       color: var(--muted);
-      margin-bottom: var(--s1);
     }
-    .post-summary {
+    .post-item h2 {
+      font-size: 1rem;
+      font-weight: normal;
+      line-height: 1.4;
+    }
+    .post-item h2 a:hover {
       color: var(--muted);
+    }
+    article {
+      margin-bottom: 4rem;
     }
     article h1 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: var(--s1);
+      font-size: 2.2rem;
+      font-weight: normal;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
     }
     article .meta {
-      font-size: 13px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
       color: var(--muted);
-      margin-bottom: var(--s3);
+      margin-bottom: 3rem;
     }
-    article .content {
-      line-height: 1.7;
+    article .content > * + * {
+      margin-top: 1.5rem;
     }
     article .content h2 {
-      font-size: 16px;
+      font-size: 1.4rem;
       font-weight: 600;
-      margin: var(--s3) 0 var(--s1);
-      padding-bottom: var(--s1);
-      border-bottom: 1px solid var(--border);
+      margin-top: 3rem;
     }
     article .content h3 {
-      font-size: 14px;
+      font-size: 1.15rem;
       font-weight: 600;
-      margin: var(--s2) 0 var(--s1);
+      margin-top: 2rem;
     }
-    article .content p {
-      margin-bottom: var(--s1);
-    }
-    article .content ul, article .content ol {
-      margin: 0 0 var(--s1) var(--s2);
-    }
-    article .content li {
-      margin-bottom: 6px;
+    article .content a {
+      color: var(--link);
+      text-decoration: underline;
     }
     article .content blockquote {
-      border-left: 2px solid var(--border);
-      padding-left: var(--s2);
-      margin: var(--s2) 0;
+      font-style: italic;
+      border-left: 2px solid #851d27;
+      padding-left: 1em;
       color: var(--muted);
     }
+    article .content ul,
+    article .content ol {
+      padding-left: 1.5rem;
+    }
+    article .content li + li {
+      margin-top: 0.5rem;
+    }
     article .content code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
-      font-size: 13px;
-      background: var(--border);
-      padding: 2px 6px;
-      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      background: var(--code-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 0.25em;
     }
     article .content pre {
-      background: var(--border);
-      padding: var(--s1);
-      border-radius: 6px;
+      border: 1px solid var(--border);
+      padding: 1rem;
       overflow-x: auto;
-      margin-bottom: var(--s1);
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
     }
     article .content pre code {
       background: none;
       padding: 0;
-    }
-    article .content a {
-      text-decoration: underline;
+      border-radius: 0;
     }
     article .content img {
       max-width: 100%;
       height: auto;
-      border-radius: 6px;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 2rem 1.25rem;
+      }
+      .post-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+        margin-bottom: 2rem;
+      }
     }
   </style>
 </head>
