@@ -1,7 +1,7 @@
 ---
-title: "Как сузить payment-задачу: candidate axes, tightened scope и chosen envelope"
+title: "How to Narrow a Payment Problem: Candidate Axes, Tightened Scope, and Chosen Envelope"
 date: "2026-04-08"
-description: "Практический разбор того, как из размытой формулировки 'добавить оплаты' перейти к осмысленному scope, активным архитектурным осям и выбранному design envelope."
+description: "A practical walkthrough of how to move from the vague prompt 'add payments' to a meaningful scope, active architectural axes, and a chosen design envelope."
 draft: false
 url: "/payment-design-axes/"
 tags:
@@ -17,140 +17,151 @@ series:
   - payment-mvp
 ---
 
-Эта статья — продолжение [первой части про payment MVP для checkout]({{< ref "/posts/2026-04-checkout-payments-mvp" >}}).  
-Там — более практический разбор самого кейса.  
-Здесь — system design взгляд: candidate axes, tightened scope, active axes, archetypes и chosen envelope.
+This article is a continuation of [the first part about a payment MVP for checkout]({{< ref "/posts/2026-04-checkout-payments-mvp" >}}).  
+That one is a more practical breakdown of the case itself.  
+This one looks at the same problem through a system design lens: candidate axes, tightened scope, active axes, archetypes, and chosen envelope.
 
 ## Candidate axes
 
 ### 1. System slice
 
 X: checkout integration / thin orchestration layer<br>
-Y: payment platform / внутренний платёжный контур
+Y: payment platform / internal payments domain
 
-Это самая верхняя ось. Она определяет, строим ли мы узкий payment slice вокруг PSP или сразу думаем категориями routing, ledger, fraud, disputes, payouts и platform concerns.
+This is the highest-level axis. It determines whether we are building a narrow payment slice around a PSP, or immediately thinking in terms of routing, ledger, fraud, disputes, payouts, and platform concerns.
 
-### 2. Payment data collection
+### 2. Payment lifecycle ownership
+
+X: PSP-led flow<br>
+Y: app-owned payment lifecycle
+
+This axis asks who really owns the payment lifecycle.  
+With X, the PSP remains the main owner of payment state, and the application mostly creates checkout sessions, stores provider references, and updates orders based on callbacks or webhooks.  
+With Y, the application introduces its own payment entity, its own create-payment flow, its own state machine, and treats provider events as inputs into an internal payment domain.
+
+This axis is important because it separates a thin checkout integration from a real internal payment orchestration layer.
+
+### 3. Payment data collection
 
 X: hosted checkout / provider-hosted page<br>
 Y: custom payment form / direct card collection
 
-При X большая часть сложности уезжает в PSP.<br>
-При Y резко растут integration complexity, PCI-surface, 3DS/SCA, токенизация и контроль над UX.
+With X, most of the complexity is pushed into the PSP.<br>
+With Y, integration complexity, PCI surface, 3DS/SCA, tokenization, and UX ownership all grow sharply.
 
-### 3. PSP topology
+### 4. PSP topology
 
 X: one PSP<br>
 Y: multi-PSP / routing / fallback
 
-Ось определяет, это одна интеграция с простым flow или уже orchestration между провайдерами с routing rules, fallback и provider-specific abstractions.
+This axis determines whether this is one integration with a simple flow, or orchestration across providers with routing rules, fallback, and provider-specific abstractions.
 
-### 4. Payment lifecycle richness
+### 5. Payment lifecycle richness
 
 X: immediate charge / sale<br>
 Y: richer lifecycle: auth → capture / void / partial capture
 
-Если деньги списываются сразу, flow проще.<br>
-Если нужен auth/capture, появляется более сложная state machine и больше failure/compensation logic.
+If money is charged immediately, the flow is simpler.<br>
+If auth/capture is needed, you get a more complex state machine and more failure/compensation logic.
 
-### 5. Confirmation model
+### 6. Confirmation model
 
 X: sync/redirect-first confirmation<br>
-Y: async confirmation через webhook как source of truth
+Y: async confirmation via webhook as source of truth
 
-При X кажется проще UX, но correctness слабее.<br>
-При Y система честнее по отношению к реальному состоянию платежа, но сложнее flow.
+With X, UX feels simpler, but correctness is weaker.<br>
+With Y, the system is more honest about the real payment state, but the flow becomes more complex.
 
-### 6. Repair path
+### 7. Repair path
 
 X: webhook-only<br>
 Y: webhook + reconciliation / polling / repair jobs
 
-Эта ось про repairability.<br>
-Нужен ли один "красивый" event path или система обязана сама дочищать lost webhook, ambiguous timeout и зависшие состояния.
+This axis is about repairability.<br>
+Do we want one “clean” event path, or must the system actively recover from lost webhooks, ambiguous timeouts, and stuck states?
 
-### 7. Workflow coupling
+### 8. Workflow coupling
 
-X: order + payment close-coupled / одна БД или почти один транзакционный контур<br>
-Y: distributed workflow между order, inventory, payment, fulfillment
+X: order + payment close-coupled / one DB or nearly one transactional boundary<br>
+Y: distributed workflow across order, inventory, payment, and fulfillment
 
-Эта ось определяет, хватает ли local transactions и retries, или уже нужен orchestration-level thinking, а позже, возможно, saga.
+This axis determines whether local transactions and retries are enough, or whether you already need orchestration-level thinking, and later maybe saga.
 
-### 8. Money model
+### 9. Money model
 
 X: payment record as source of truth for checkout<br>
 Y: ledger/accounting-first model
 
-При X достаточно payment/order state machine для checkout MVP.<br>
-При Y уже думаем про double-entry, accounting correctness, balance semantics, financial reporting.
+With X, a payment/order state machine is enough for a checkout MVP.<br>
+With Y, you are already thinking about double-entry, accounting correctness, balance semantics, and financial reporting.
 
-### 9. State model richness
+### 10. State model richness
 
 X: simple state machine<br>
 Y: rich payment domain model
 
-При X хватает created / pending / succeeded / failed / expired.<br>
-При Y появляются authorized, captured, partially_refunded, chargeback_pending, manual_review и т.д.
+With X, `created / pending / succeeded / failed / expired` is enough.<br>
+With Y, you get `authorized`, `captured`, `partially_refunded`, `chargeback_pending`, `manual_review`, and so on.
 
-### 10. Refund handling
+### 11. Refund handling
 
 X: no refunds or manual refunds<br>
 Y: full refund lifecycle in-system
 
-Эта ось быстро меняет объём задачи.<br>
-Refunds — это уже не просто checkout, а отдельный кусок payment operations.
+This axis changes the size of the problem very quickly.<br>
+Refunds are no longer “just checkout”; they are already a separate chunk of payment operations.
 
-### 11. Ops model
+### 12. Ops model
 
 X: manual ops for tail cases<br>
 Y: full automation of edge cases
 
-При X редкие сложные случаи можно чинить руками через admin/support flow.<br>
-При Y система сама обрабатывает больше хвоста: retries, compensations, escalations, recovery workflows.
+With X, rare complex cases can be fixed manually through admin/support flows.<br>
+With Y, the system handles more of the tail itself: retries, compensations, escalations, recovery workflows.
 
-### 12. Abstraction depth
+### 13. Abstraction depth
 
 X: thin PSP-specific adapter<br>
 Y: generic payment abstraction for many providers
 
-При X быстрее delivery и меньше accidental complexity.<br>
-При Y выше переносимость и проще рост в multi-PSP, но выше upfront cost.
+With X, delivery is faster and there is less accidental complexity.<br>
+With Y, portability is higher and growth into multi-PSP is easier, but the upfront cost is higher.
 
-
-### 13. Infra style
+### 14. Infra style
 
 X: relational DB + background jobs<br>
 Y: queue/event-driven pipeline
 
-При X проще reasoning и быстрее MVP.<br>
-При Y лучше decoupling, bursts, extensibility, но выше system complexity.
+With X, reasoning is simpler and MVP delivery is faster.<br>
+With Y, decoupling, burst handling, and extensibility are better, but system complexity is higher.
 
-### 14. Geography / market complexity
+### 15. Geography / market complexity
 
 X: single country / few payment methods / simple currency setup<br>
 Y: multi-country / many local payment methods / regulatory variation
 
-Это axis не только про scale, но и про shape интеграции.<br>
-Local methods, country-specific flows и regulatory differences быстро ломают “просто checkout”.
+This axis is not only about scale, but also about integration shape.<br>
+Local methods, country-specific flows, and regulatory differences break the illusion of “just checkout” very quickly.
 
 ## Tightened scope
 
-* **system slice:** checkout integration, не payment platform  
+* **system slice:** checkout integration, not a payment platform  
+* **payment lifecycle ownership:** not fully PSP-led; we keep a minimal internal payment lifecycle  
 * **payment data collection:** hosted checkout  
 * **PSP topology:** one PSP  
 * **payment lifecycle:** immediate charge  
 * **confirmation model:** async/webhook truth  
-* **workflow coupling:** без saga на старте  
-* **money model:** не ledger-first  
+* **workflow coupling:** no saga at the start  
+* **money model:** not ledger-first  
 * **refunds:** manual or out of scope  
 * **infra style:** Postgres + jobs
 
-Мы не проектируем платёжную платформу целиком, а только **checkout payments slice** для простого e-commerce MVP. Задача — не строить свой payment stack со всем хвостом доменной сложности, а дать пользователю оплатить заказ через внешний PSP и корректно отразить результат оплаты у себя.
+We are not designing a full payment platform, only a **checkout payments slice** for a simple e-commerce MVP. The task is not to build our own payment stack with the whole tail of domain complexity, but to let a user pay for an order through an external PSP and reflect the result correctly in our own system.
 
-Поэтому scope я бы сразу сузил до **one-time payment через одного PSP с hosted checkout**. Без хранения карт, без custom payment form, без multi-PSP routing, refunds, disputes и прочего platform-level payment complexity.
+So I would narrow the scope immediately to a **one-time payment through one PSP with hosted checkout**. No card storage, no custom payment form, no multi-PSP routing, no refunds, disputes, or other platform-level payment complexity.
 
-Внутри scope остаётся только необходимое: создать payment attempt, связать его с order, обработать webhook, обновить статусы и иметь repair path для дублей и потерянных событий.
+What stays inside the scope is only the necessary core: create a payment attempt, link it to the order, process the webhook, update statuses, and have a repair path for duplicates and lost events.
 
-## Go обратно 
+## Go back
 
-Если хочется вернуться от framework обратно к более практическому разбору, вот ссылка на [первую часть, начиная с Active axes]({{< ref "/posts/2026-04-checkout-payments-mvp#active-axes" >}})
+If you want to move back from framework to the more practical breakdown, here is the link to [the first part, starting from Active axes]({{< ref "/posts/2026-04-checkout-payments-mvp#active-axes" >}})
