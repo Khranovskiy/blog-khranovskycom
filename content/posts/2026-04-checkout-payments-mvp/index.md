@@ -1,6 +1,6 @@
 ---
 title: "How to Add Checkout Payments in 3 Weeks as a Solo Engineer"
-date: "2026-04-08"
+date: "2026-04-14"
 description: "How to narrow the problem down to a real payment MVP for e-commerce: one PSP, hosted checkout, idempotency, webhooks, and reconciliation without trying to build a payment platform."
 draft: false
 url: "/checkout-payments-mvp/"

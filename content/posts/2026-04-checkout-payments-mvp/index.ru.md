@@ -1,6 +1,6 @@
 ---
 title: "Как добавить оплаты в checkout за 3 недели одному инженеру"
-date: "2026-04-08"
+date: "2026-04-14"
 description: "Как сузить задачу до реального payment MVP для e-commerce: один PSP, hosted checkout, idempotency, webhooks и reconciliation без попытки построить платёжную платформу."
 draft: false
 url: "/ru/checkout-payments-mvp/"

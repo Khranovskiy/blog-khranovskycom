@@ -1,6 +1,6 @@
 ---
 title: "Как сузить payment-задачу: candidate axes, tightened scope"
-date: "2026-04-08"
+date: "2026-04-15"
 description: "Практический разбор того, как из размытой формулировки 'добавить оплаты' перейти к осмысленному scope."
 draft: false
 url: "/ru/payment-design-axes/"
