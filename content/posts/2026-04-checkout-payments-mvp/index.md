@@ -7,6 +7,8 @@ url: "/checkout-payments-mvp/"
 tags:
   - payments
   - system-design
+params:
+  fontsize: small
 ---
 
 I was recently asked a question:

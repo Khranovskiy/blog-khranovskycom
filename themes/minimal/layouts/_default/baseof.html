@@ -213,6 +213,8 @@
     footer a:hover {
       color: var(--fg);
     }
+    body.font-small { font-size: 14px; }
+    body.font-large { font-size: 21px; }
     @media (max-width: 600px) {
       body {
         padding: 2rem 1.25rem;
@@ -225,7 +227,7 @@
     }
   </style>
 </head>
-<body>
+<body{{ with .Params.fontsize }} class="font-{{ . }}"{{ end }}>
   <div class="container">
     {{ block "main" . }}{{ end }}
   </div>
