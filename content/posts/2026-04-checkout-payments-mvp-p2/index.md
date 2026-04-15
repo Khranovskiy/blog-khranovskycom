@@ -1,7 +1,7 @@
 ---
-title: "How to Narrow a Payment Problem: Candidate Axes, Tightened Scope, and Chosen Envelope"
+title: "How to Narrow a Payment Problem: Candidate Axes, Tightened Scope"
 date: "2026-04-08"
-description: "A practical walkthrough of how to move from the vague prompt 'add payments' to a meaningful scope, active architectural axes, and a chosen design envelope."
+description: "A practical walkthrough of how to move from the vague prompt 'add payments' to a meaningful scope"
 draft: false
 url: "/payment-design-axes/"
 tags:
@@ -164,4 +164,4 @@ What stays inside the scope is only the necessary core: create a payment attempt
 
 ## Go back
 
-If you want to move back from framework to the more practical breakdown, here is the link to [the first part, starting from Active axes]({{< ref "/posts/2026-04-checkout-payments-mvp" >}})
+Продолжение про активные архитектурные оси и выбранный design envelope находится в [первой части, начиная с Active axes]({{< ref "/posts/2026-04-checkout-payments-mvp" >}})
