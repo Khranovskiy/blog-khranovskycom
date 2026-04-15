@@ -4,7 +4,7 @@
 <article>
   <h1>{{ .Title }}</h1>
   <div class="meta">
-    <time>{{ .Date.Format "Jan 2, 2006" }}</time> · {{ .ReadingTime }} min read
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time> · {{ .ReadingTime }} min read
     {{ with .Params.tags }}
       {{ range . }} · {{ . }}{{ end }}
     {{ end }}
