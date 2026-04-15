@@ -14,6 +14,27 @@
   </div>
 </article>
 
+<div class="post-metadata">
+  <table>
+    <tr>
+      <td class="meta-key">Published</td>
+      <td>{{ .Date.Format "Jan 2, 2006" }}</td>
+    </tr>
+    {{ with .PrevInSection }}
+    <tr>
+      <td class="meta-key">Previous</td>
+      <td><a href="{{ .Permalink }}">{{ .Title }}</a></td>
+    </tr>
+    {{ end }}
+    {{ with .NextInSection }}
+    <tr>
+      <td class="meta-key">Next</td>
+      <td><a href="{{ .Permalink }}">{{ .Title }}</a></td>
+    </tr>
+    {{ end }}
+  </table>
+</div>
+
 <footer>
   Denis Khranovskii · <a href="https://www.linkedin.com/in/denis-khranovskiy/">LinkedIn</a>
 </footer>
