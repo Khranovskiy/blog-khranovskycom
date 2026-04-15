@@ -162,4 +162,4 @@ What stays inside the scope is only the necessary core: create a payment attempt
 
 ## Go back
 
-Продолжение про активные архитектурные оси и выбранный design envelope находится в [первой части, начиная с Active axes]({{< ref "/posts/2026-04-checkout-payments-mvp" >}})
+The continuation on active architectural axes and the chosen design envelope is in [part one, starting from Active axes]({{< ref "/posts/2026-04-checkout-payments-mvp" >}})
