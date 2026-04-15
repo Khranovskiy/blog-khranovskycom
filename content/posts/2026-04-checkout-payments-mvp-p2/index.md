@@ -164,4 +164,4 @@ What stays inside the scope is only the necessary core: create a payment attempt
 
 ## Go back
 
-If you want to move back from framework to the more practical breakdown, here is the link to [the first part, starting from Active axes]({{< ref "/posts/2026-04-checkout-payments-mvp#active-axes" >}})
+If you want to move back from framework to the more practical breakdown, here is the link to [the first part, starting from Active axes]({{< ref "/posts/2026-04-checkout-payments-mvp" >}})

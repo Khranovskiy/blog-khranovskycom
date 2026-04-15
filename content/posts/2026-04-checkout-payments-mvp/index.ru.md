@@ -44,7 +44,7 @@ series:
 
 После такого сужения большие развилки уже закрыты. Внутри выбранного MVP остаются только те оси, которые всё ещё реально меняют дизайн. Именно они и становятся **active axes**.
 
-**Candidate axes** и **scope tightening** я отдельно вынес в [payments-design-axes]({{< ref "/posts/ru/2026-04-checkout-payments-mvp-p2" >}}). Здесь дальше интереснее уже не всё пространство решений, а то, **каким именно получается выбранный checkout MVP**.
+**Candidate axes** и **scope tightening** я отдельно вынес в [payments-design-axes]({{< ref "/posts/2026-04-checkout-payments-mvp-p2" >}}). Здесь дальше интереснее уже не всё пространство решений, а то, **каким именно получается выбранный checkout MVP**.
 
 ## Active axes
 
