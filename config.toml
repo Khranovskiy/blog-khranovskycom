@@ -1,7 +1,16 @@
 baseURL = "https://khranovsky.com/"
-languageCode = "en-us"
-title = "blog by Denis Khran"
+defaultContentLanguage = "en"
 theme = "minimal"
+
+[languages]
+  [languages.en]
+    languageCode = "en-us"
+    title = "blog by Denis Khran"
+    weight = 1
+  [languages.ru]
+    languageCode = "ru"
+    title = "blog by Denis Khran"
+    weight = 2
 
 [markup]
   [markup.goldmark.renderer]
