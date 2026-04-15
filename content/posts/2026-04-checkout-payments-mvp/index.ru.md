@@ -6,15 +6,13 @@ draft: false
 url: "/ru/checkout-payments-mvp/"
 tags:
   - payments
-  - checkout
-  - mvp
-  - psp
-  - ecommerce
   - system-design
 categories:
   - architecture
 series:
   - payment-mvp
+params:
+  fontsize: small
 ---
 
 Недавно мне задали вопрос:

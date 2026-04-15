@@ -7,14 +7,12 @@ url: "/ru/payment-design-axes/"
 tags:
   - payments
   - system-design
-  - architecture
-  - requirements
-  - design-axes
-  - scope
 categories:
   - architecture
 series:
   - payment-mvp
+params:
+  fontsize: small
 ---
 
 Эта статья — продолжение [первой части про payment MVP для checkout]({{< ref "/posts/2026-04-checkout-payments-mvp" >}}).  
