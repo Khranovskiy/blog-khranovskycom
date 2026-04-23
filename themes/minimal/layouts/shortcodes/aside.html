@@ -4,9 +4,9 @@
     {{ $src := .Get "src" }}
     {{ $img := .Page.Resources.GetMatch $src }}
     {{ if $img }}
-      <img src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" | default "" }}">
+      <img src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" | default "" }}" loading="lazy">
     {{ else }}
-      <img src="{{ $src }}" alt="{{ .Get "alt" | default "" }}">
+      <img src="{{ $src }}" alt="{{ .Get "alt" | default "" }}" loading="lazy">
     {{ end }}
   </div>
 </div>
