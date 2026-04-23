@@ -220,6 +220,34 @@
     footer a:hover {
       color: var(--fg);
     }
+    .aside-content > * + * { margin-top: 1.5rem; }
+    /*body.layout-wide { line-height: 1.45; }*/
+    body.layout-wide .container { max-width: 680px; padding-left: 0px; }
+    body.layout-wide article .content > * { max-width: var(--max); }
+    body.layout-wide article .content > .aside-section { max-width: none; }
+    .aside-section {
+      display: grid;
+      grid-template-columns: 520px 420px;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .aside-image {
+      position: sticky;
+      top: 2rem;
+    }
+    .aside-image img {
+      width: 100%;
+      border: 0px solid var(--border);
+      border-radius: 8px;
+    }
+    @media (max-width: 768px) {
+      .aside-section {
+        display: block;
+      }
+      .aside-image {
+        display: none;
+      }
+    }
     body.font-small { font-size: 15px; }
     body.font-small article .meta { margin-bottom: 1.5rem; }
     body.font-small article .content > * + * { margin-top: 1rem; }
@@ -238,7 +266,7 @@
     }
   </style>
 </head>
-<body{{ with .Params.fontsize }} class="font-{{ . }}"{{ end }}>
+<body{{ with .Params.fontsize }} class="font-{{ . }}{{ if $.Params.layout }} layout-{{ $.Params.layout }}{{ end }}"{{ else }}{{ with .Params.layout }} class="layout-{{ . }}"{{ end }}{{ end }}>
   <div class="container">
     {{ block "main" . }}{{ end }}
   </div>

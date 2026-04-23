@@ -1,0 +1,12 @@
+<div class="aside-section">
+  <div class="aside-content">{{ .Inner | markdownify }}</div>
+  <div class="aside-image">
+    {{ $src := .Get "src" }}
+    {{ $img := .Page.Resources.GetMatch $src }}
+    {{ if $img }}
+      <img src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" | default "" }}">
+    {{ else }}
+      <img src="{{ $src }}" alt="{{ .Get "alt" | default "" }}">
+    {{ end }}
+  </div>
+</div>

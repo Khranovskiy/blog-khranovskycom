@@ -10,15 +10,20 @@ tags:
   - plain-text
 categories:
   - productivity
+params:
+    layout: wide
 ---
 
 ## 1. One file as my working surface
-
+{{< aside src="img/pipeline-01.png" alt="One file as my working surface" >}}
 I do not have one “perfect” productivity app. Instead, I have one growing markdown file that is almost always open in my editor. It holds my current job search pipeline, a daily log, several active project tracks, and a quick inbox for things I do not want to lose. In my current one-page file, it is already structured this way: `Active Pipeline` at the top, a quick dump of incoming items right below it, and then daily entries with `Progress`, `Waiting`, `Win`, and movement across different areas.
 
 I do not want to start this article with philosophy or methodology. It is easier to show the mechanics through a real-life scenario: a recruiter messages me, I reflect that somewhere in my system, then I reply, then there is a screening call, and after that the process either moves forward or dies. Once you see that flow, it becomes much clearer why the system needs a top pipeline, a daily log, and why this works better for me than a spreadsheet or a task manager.
 
+{{< /aside >}}
+
 ## 2. A recruiter reached out: how I capture it
+{{< aside src="img/pipeline-02.png" alt="Active Pipeline after new contact" >}}
 
 Let’s take a common situation: an HR person messages me on LinkedIn or Telegram and suggests a call. If the contact looks at least potentially real, I try to reflect it in two places right away.
 
@@ -26,18 +31,16 @@ First, in `Active Pipeline` at the top of the file. This is not an archive or a 
 
 For example, it might look like this:
 
-```  
-## Active Pipeline (currently — 3 active contacts)
+```md
+## Active Pipeline (currently — 1 active contacts)
 
-Date		Recruiter		src    	Company		Status  Next step
-2026-04-23	Maria Volkova	LI		Nexora Pay    🤔	reply and clarify details
-2026-04-21	Ilya Sokolov	tg		Northgrid     ⏳	waiting for feedback after intro
-2026-04-18	Anna Belkina	email	CloudPort     🤔	decide whether the role is interesting
+Date Recruiter src Company Status  Next step
+2026-04-23 Maria Volkova LI Nexora Pay 🤔 reply and clarify details
 ```  
 
 After that, I add the same event to the current day’s section. Not as a pipeline row this time, but as a daily log entry:
 
-```  
+```md  
 #### 2026-04-23
 
 - [x] Maria Volkova (Nexora Pay) reached out on LinkedIn
@@ -47,13 +50,16 @@ After that, I add the same event to the current day’s section. Not as a pipeli
 
 It matters to me that the same event lives in two forms. The top row is for overview: I open the file and in a few seconds I can see what is active right now. The entry below is for context: what exactly happened, how I assessed it, and why the process is in that state. In the real file this is exactly how it works: the active layer stays short, while the history and nuances live below in the daily entries.
 
+{{< /aside >}}
+
 ## 3. I replied and booked a screening
+{{< aside src="img/pipeline-03.png" alt="Pipeline after reply booked" >}}
 
 The next step is that I decide the contact is interesting, reply to the recruiter, and agree on a call. At that point the system updates in two places again.
 
 The log gets the action itself and the new next step:
 
-```  
+```md  
 #### 2026-04-23
 
 - [x] replied to Maria Volkova (Nexora Pay)
@@ -63,7 +69,7 @@ The log gets the action itself and the new next step:
 
 And in `Active Pipeline`, the row changes from a vague 🤔 into a concrete 📅:
 
-```
+```md
 Date		Recruiter		src Company		Status  Next step
 2026-04-23	Maria Volkova	LI	Nexora Pay    📅	screening 04.25 11:00 CET
 ```
@@ -72,13 +78,15 @@ What I like here is that a vague incoming thread stops being “something I shou
 
 This is also where markdown starts beating a spreadsheet for me. I do not need to stop and think about which of twelve columns to update. I just edit one line at the top and add a couple of lines below.
 
+{{< /aside >}}
+  
 ## 4. The screening happened: now I am waiting for the result
-
+{{< aside src="img/pipeline-04.png" alt="Pipeline after waiting for the result" >}}
 After a screening call, I want to record not only that the call happened, but also what it meant. What we discussed, what risks I noticed, what was promised next, and what I am waiting for now.
 
 Usually a short daily log entry is enough:
 
-```  
+```md
 #### 2026-04-25
 
 - [x] had a screening with Maria Volkova (Nexora Pay)
@@ -97,13 +105,15 @@ It is a very small action, but this is exactly what makes the system useful. If 
 
 At this point the reader should already see the main idea: the file is not just there to “remember tasks.” It is there to keep the current state and the history of state changes in one place. In the next section I would show two more quick scenarios: a positive reply that moves the process to the next stage, and the other side of the system — rejection, follow-up, or an intentional decision to leave the process.
 
-## 5. A positive reply came in: the process moves forward
+{{< /aside >}}
 
+## 5. A positive reply came in: the process moves forward
+{{< aside src="img/pipeline-05.png" alt="Pipeline after a positive reply" >}}
 When a positive reply comes after a screening, I update both parts of the system again: the history below and the current state above.
 
 In the log, it might look like this:
 
-```  
+```md  
 #### 2026-04-26
 
 - [x] Maria Volkova (Nexora Pay) came back with a positive reply
@@ -115,7 +125,7 @@ In the log, it might look like this:
 
 And the row in `Active Pipeline` becomes more specific:
 
-```  
+```md
 Date		Recruiter		src Company		Status  Next step
 2026-04-23	Maria Volkova	LI	Nexora Pay	📅		technical interview 04.29 15:00 CET
 ```
@@ -124,13 +134,15 @@ What I like here is that the system does not just store the fact that “they in
 
 In my real one-page file, this happens all the time: after an interview, `Next` appears; after feedback, the top row changes; and `Win` sometimes helps me see that the day was not only about waiting, but also about progress.
 
-## 6. Rejection, ghosting, and my own decision to exit a process
+{{< /aside >}}
 
+## 6. Rejection, ghosting, and my own decision to exit a process
+{{< aside src="img/pipeline-06.png" alt="Pipeline after rejection" >}}
 The system is not only there to make successful processes look tidy. It is just as important that it helps me clean the pipeline and stop dragging dead branches with me.
 
 If a rejection comes in, I record it in the daily log and simply remove the row from `Active Pipeline`:
 
-```  
+```md  
 #### 2026-04-30
 
 - [x] Maria Volkova (Nexora Pay) sent a rejection
@@ -141,7 +153,7 @@ If a rejection comes in, I record it in the daily log and simply remove the row 
 
 If a process stalls, I can explicitly turn passive waiting into an action:
 
-```  
+```md
 #### 2026-05-02
 
 - [x] sent a follow-up to Ilya Sokolov (Northgrid)
@@ -151,7 +163,7 @@ If a process stalls, I can explicitly turn passive waiting into an action:
 
 And sometimes the most useful thing is to leave the process myself:
 
-```  
+```md
 #### 2026-05-03
 
 - [x] decided not to continue with Anna Belkina (CloudPort)
@@ -160,8 +172,10 @@ And sometimes the most useful thing is to leave the process myself:
 
 This is an important point. The top pipeline should not turn into a graveyard of contacts I “might want to remember someday.” It is there for live processes. Everything else stays in the history below.
 
-## 7. What the system consists of after these examples
+{{< /aside >}}
 
+## 7. What the system consists of after these examples
+{{< aside src="img/sec-7.png" alt="What the system consists of" >}}
 After these examples, the mechanics can be reduced to a few simple layers.
 
 The first layer is `Active Pipeline` at the top of the file. It answers one question: **what is active right now?** It contains only the live pipeline, only the current state, and only the next step.
@@ -178,6 +192,8 @@ If I had to summarize it very briefly, the system answers three questions at onc
 - what happened today;
 - what important directions am I moving overall.
 
+{{< /aside >}}
+
 ## 8. Why this worked better for me than a spreadsheet
 
 A spreadsheet feels like the natural tool for job search right up until the moment you start maintaining it every day.
@@ -191,12 +207,14 @@ To me, there is a more general principle here: in a personal system, ease of wri
 That fits well with how the one-page file works now: the top block is short and operational, while the details, thoughts, and state transitions live below. That structure alone already shows why plain text turned out to be more durable for me than a large spreadsheet.
 
 ## 9. Why this worked better for me than doing everything in a task manager
-
+{{< aside src="img/sec-9.png" alt="task manager" >}}
 My task manager did not disappear completely, but it stopped being the main place where the system lives. I tried putting recurring tasks, inbox, projects, and next steps there, and it is still useful for that. But it never became the main working surface.
 
-The reason is simple: in a task manager, a task usually lives as a separate object, while I care more about context. I need to see not only “reply to the recruiter” or “read a chapter,” but also the history of the process, the neighboring movements, what I am waiting for, what I already did, and which other tracks are alive next to it. In a markdown file, that context lives naturally. In a task manager, it quickly gets spread across projects, comments, labels, and filters.
+The reason is simple: in a task manager, a task usually lives as a separate object, while I care more about context. I need to see not only “reply to the recruiter” or “read a chapter,” but also the history of the process, the neighboring movements, what I am waiting for, what I already did, and which other tracks are alive next to it. In a markdown file, that context lives naturally. In a task manager, it quickly gets spread across projects, comments, labels, and filters.   
 
 So what I ended up with is this: the markdown file is the operating surface, and the task manager is a supporting layer. It is useful for recurring tasks, task inbox, and, if I want, a few immediate next steps. But the main context still stays in the file. In the grok discussion, Todoist gradually crystallized into the same role: recurring, inbox, reminders — yes; the main living context — probably not.
+
+{{< /aside >}}
 
 ## 10. Several active tracks and why I work with Pomodoro
 
