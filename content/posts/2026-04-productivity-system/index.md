@@ -228,6 +228,8 @@ What I like is that the system does not force this on me. It does not require me
 
 ## 13. Paper as a thinking layer, digital as an operating layer
 
+![](img/2026-paper-1.jpg)
+
 There is also a paper layer in this system, but it is not the main one. Paper works better for me for live thinking: a daily brain dump, ideas, notes from reading, quick sketches, emotionally colored entries. It is easier to give a note some character there, highlight something with color, draw something, and generally think more freely.
 
 But the operating layer — the active pipeline, the history of changes, the next step, everything I may need to find later through search — lives in markdown. I am not trying to make paper and digital the same. They serve different roles: paper helps me think, digital helps me not lose things and manage them.
