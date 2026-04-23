@@ -4,7 +4,13 @@
     {{ $src := .Get "src" }}
     {{ $img := .Page.Resources.GetMatch $src }}
     {{ if $img }}
-      <img src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" | default "" }}" loading="lazy">
+      {{ $webp := $img.Resize "420x webp q85" }}
+      {{ $webp2x := $img.Resize "840x webp q85" }}
+      <img src="{{ $webp.RelPermalink }}"
+           srcset="{{ $webp.RelPermalink }} 1x, {{ $webp2x.RelPermalink }} 2x"
+           alt="{{ .Get "alt" | default "" }}"
+           width="{{ $webp.Width }}" height="{{ $webp.Height }}"
+           loading="lazy" decoding="async">
     {{ else }}
       <img src="{{ $src }}" alt="{{ .Get "alt" | default "" }}" loading="lazy">
     {{ end }}
