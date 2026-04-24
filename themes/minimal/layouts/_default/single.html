@@ -1,4 +1,14 @@
 {{ define "main" }}
+{{ if .TableOfContents }}
+<aside class="toc">
+  <div class="toc-dots"></div>
+  <div class="toc-panel">
+    <div class="toc-panel-title">{{ .Title }}</div>
+    {{ .TableOfContents }}
+  </div>
+</aside>
+{{ end }}
+
 <a href="{{ .Site.BaseURL }}posts/" class="back-link">← blog</a>
 
 <article>
@@ -38,4 +48,41 @@
 <footer>
   Denis Khranovskii · <a href="https://www.linkedin.com/in/denis-khranovskiy/">LinkedIn</a>
 </footer>
+
+{{ if .TableOfContents }}
+<script>
+(function() {
+  var aside = document.querySelector('.toc');
+  if (!aside) return;
+  var dotsEl = aside.querySelector('.toc-dots');
+  var links = Array.from(aside.querySelectorAll('.toc-panel nav a'));
+  var headings = Array.from(document.querySelectorAll('article h2, article h3'));
+  if (!headings.length) { aside.style.display = 'none'; return; }
+
+  // build dots
+  headings.forEach(function(h) {
+    var d = document.createElement('span');
+    d.className = 'toc-dot toc-dot-' + h.tagName.toLowerCase();
+    dotsEl.appendChild(d);
+  });
+  var dots = Array.from(dotsEl.querySelectorAll('.toc-dot'));
+
+  function update() {
+    var scrollY = window.scrollY + 100;
+    var idx = 0;
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i].offsetTop <= scrollY) idx = i;
+    }
+    dots.forEach(function(d, i) { d.classList.toggle('toc-dot-active', i === idx); });
+    var activeId = headings[idx].id;
+    links.forEach(function(a) {
+      a.classList.toggle('toc-active', a.getAttribute('href') === '#' + activeId);
+    });
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+{{ end }}
 {{ end }}
