@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ if .TableOfContents }}
+{{ if .Params.toc }}
 <aside class="toc">
   <div class="toc-dots"></div>
   <div class="toc-panel">
@@ -49,7 +49,7 @@
   Denis Khranovskii · <a href="https://www.linkedin.com/in/denis-khranovskiy/">LinkedIn</a>
 </footer>
 
-{{ if .TableOfContents }}
+{{ if .Params.toc }}
 <script>
 (function() {
   var aside = document.querySelector('.toc');

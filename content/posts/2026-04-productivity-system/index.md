@@ -1,6 +1,7 @@
 ---
 title: "One Markdown File Instead of a Todo App, Spreadsheet, and Scattered Notes"
 date: "2026-04-23"
+toc: true
 description: "How I use one growing markdown file to track job search, interviews, daily progress, and active projects"
 draft: false
 url: "/productivity-system/"

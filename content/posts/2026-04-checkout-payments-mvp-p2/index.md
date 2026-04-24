@@ -1,6 +1,7 @@
 ---
 title: "How to Narrow a Payment Problem: Candidate Axes, Tightened Scope"
 date: "2026-04-15"
+toc: true
 description: "A practical walkthrough of how to move from the vague prompt 'add payments' to a meaningful scope"
 draft: false
 url: "/payment-design-axes/"

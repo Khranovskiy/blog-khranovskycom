@@ -1,6 +1,7 @@
 ---
 title: "Один markdown-файл вместо todo app, spreadsheet и разрозненных заметок: моя система продуктивности и ведения interview pipeline"
 date: "2026-04-23"
+toc: true
 description: "How I use one growing markdown file to track job search, interviews, daily progress, and active projects"
 draft: false
 url: "/ru/productivity-system/"
