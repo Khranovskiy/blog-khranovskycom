@@ -18,5 +18,4 @@ theme = "minimal"
   [markup.highlight]
     codeFences = true
     guessSyntax = true
-    noClasses = true
-    style = "tango"
+    noClasses = false
